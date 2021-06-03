@@ -30,3 +30,15 @@ ritwickdey.liveserver-5.6.1
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct // 使用七牛云的
 ```
+
+## go ini -- 解析配置文件
+
+https://ini.unknwon.io/
+
+## gin 
+
+https://gin-gonic.com/zh-cn/docs/
+
+## gorm
+
+https://gorm.io/zh_CN/docs/
