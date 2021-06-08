@@ -42,3 +42,37 @@ https://gin-gonic.com/zh-cn/docs/
 ## gorm
 
 https://gorm.io/zh_CN/docs/
+
+### 错误
+
+```txt
+[error] invalid field found for struct gin-blog/model.Article's field Category, need to define a valid foreign key for relations or it need to implement the Valuer/Scanner interface
+```
+
+```go
+type Article struct {
+	gorm.Model
+	Category Category
+	Title string `gorm:"type:varchar(100);not null" json:"title"`
+	Cid int `gorm:"type:int;not null" json:"cid"`
+	Desc string `gorm:"type:varchar(200)" json:"desc"`
+	Content string `gorm:"type:longtext" json:"content"`
+	Img string `gorm:"type:varchar(100)" json:"img"`
+}
+```
+
+缺少外键,添加下面的外键就可以了。
+
+```go
+type Article struct {
+	gorm.Model
+    //添加外键依赖
+	Category Category `gorm:"foreignkey:Name"`
+	Title string `gorm:"type:varchar(100);not null" json:"title"`
+	Cid int `gorm:"type:int;not null" json:"cid"`
+	Desc string `gorm:"type:varchar(200)" json:"desc"`
+	Content string `gorm:"type:longtext" json:"content"`
+	Img string `gorm:"type:varchar(100)" json:"img"`
+}
+```
+

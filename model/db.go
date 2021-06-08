@@ -19,7 +19,8 @@ func InitDb() {
 	}
 
 	//自动迁移您的 schema，保持您的 schema 是最新的
-	db.AutoMigrate()
+	//会自动创建articles,categories,users
+	db.AutoMigrate(&User{},&Article{},&Category{})
 
 	//转换成*sql.DB类型
 	sqlDB, sqlerr := db.DB()
